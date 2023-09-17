@@ -1,0 +1,23 @@
+{
+  "name": "yelpcamp-vts",
+  "description": "A web development bootcamp project by Coltsteel. Instead of using traditional or vanilla JS,HTML, and CSS, why not use TS both for frontend and backend.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "debug": "^2.6.9",
+    "depd": "^2.0.0",
+    "ee-first": "^1.1.1",
+    "ms": "^2.0.0",
+    "on-finished": "^2.3.0",
+    "on-headers": "^1.0.2",
+    "safe-buffer": "^5.1.2"
+  },
+  "scripts": {
+    "dev-fe": "",
+    "dev-be": "npm run build --prefix backend/ && npm run dev --prefix backend/\"",
+    "delay": "node -e \"setTimeout(()=>{},6000)\""
+  },
+  "author": "",
+  "license": "ISC"
+}
