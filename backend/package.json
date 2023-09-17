@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/dist/server.js",
   "scripts": {
-    "dev": "node src/dist/server.js",
-    "build": "rm -rf src/dist/* && tsc && tsc-alias  ",
+    "dev": "node dist/server.js",
+    "build": "rm -rf dist/* && tsc && tsc-alias  ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,6 +14,7 @@
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "express-validator": "^7.0.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.2",
     "moongose": "^1.0.0",
@@ -27,10 +28,13 @@
     "@types/cors": "^2.8.14",
     "@types/express": "^4.17.17",
     "@types/jsonwebtoken": "^9.0.3",
+    "@types/morgan": "^1.9.5",
     "@types/passport": "^1.0.12",
     "@types/passport-facebook": "^3.0.0",
     "@types/passport-google-oauth20": "^2.0.11",
     "@types/passport-jwt": "^3.0.9",
+    "dotenv": "^16.3.1",
+    "morgan": "^1.10.0",
     "tsc-alias": "^1.8.7"
   }
 }
