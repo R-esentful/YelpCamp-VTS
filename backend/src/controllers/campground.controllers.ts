@@ -33,3 +33,15 @@ export const newCampground = wrapper(async (req: Request, res: Response) => {
     campground: campground,
   });
 });
+
+/**
+ * @desc Gets specific campground
+ * @route /campgrounds/:id
+ * @method GET
+ */
+
+export const getCampground = wrapper(async (req: Request, res: Response, next: NextFunction) => {
+  const campground = await Campground.findById(req.params.id);
+
+  return res.status(200).json({ campground: campground });
+});
