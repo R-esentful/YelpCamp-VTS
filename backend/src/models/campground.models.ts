@@ -13,9 +13,11 @@ const campgroundSchema = new Schema(
       type: String,
       enum: ["PRIVATE", "PUBLIC"],
       required: [true, "Please provide campground type."],
+      default: "PUBLIC",
     },
     rating: {
       type: Number,
+      default: 0,
     },
     location: { type: String, required: [true, "Please provide the campground location."] },
     price: {
