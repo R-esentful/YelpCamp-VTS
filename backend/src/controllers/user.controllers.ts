@@ -14,6 +14,7 @@ import User from "@models/user.models";
  * @desc Creates a new user
  * @route /users
  * @method POST
+ * TODO: Oauth integration
  */
 
 export const newUser = wrapper(async (req: Request, res: Response, next: NextFunction) => {

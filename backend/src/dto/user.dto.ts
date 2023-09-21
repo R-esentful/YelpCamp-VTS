@@ -1,6 +1,5 @@
 import User from "@models/user.models";
-import { Request } from "express";
-import { body, param } from "express-validator";
+import { body } from "express-validator";
 
 export const userValidator = [
   body("firstName")
