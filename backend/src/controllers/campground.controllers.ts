@@ -40,8 +40,33 @@ export const newCampground = wrapper(async (req: Request, res: Response) => {
  * @method GET
  */
 
-export const getCampground = wrapper(async (req: Request, res: Response, next: NextFunction) => {
+export const getCampground = wrapper(async (req: Request, res: Response) => {
   const campground = await Campground.findById(req.params.id);
 
   return res.status(200).json({ campground: campground });
+});
+
+/**
+ * @desc Edits specific campground
+ * @route /campgrounds/:id
+ * @method PATCH
+ */
+export const editSpecificCampground = wrapper(async (req: Request, res: Response) => {
+  const campground = await Campground.findOneAndUpdate({ ...req.body });
+
+  return res.status(200).json({
+    message: `Campground ${campground!.campName} successfully edited.`,
+    campground: campground,
+  });
+});
+
+/**
+ * @desc Deletes specific campground
+ * @route /campgrounds/:id
+ * @method DELETE
+ */
+export const deleteSpecificCampgrounds = wrapper(async (req: Request, res: Response) => {
+  await Campground.findByIdAndDelete(req.body.id);
+
+  return res.status(200).json({ message: "Campground successfully deleted." });
 });
