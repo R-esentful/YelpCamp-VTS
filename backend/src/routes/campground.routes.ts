@@ -5,6 +5,8 @@ import { Router } from "express";
 
 // Controllers
 import {
+  deleteSpecificCampgrounds,
+  editSpecificCampground,
   getAllCampground,
   getCampground,
   newCampground,
@@ -22,6 +24,9 @@ campgroundRoutes
   .get(getAllCampground)
   .post(campgroundValidator, _dtoMiddleware, newCampground);
 
-campgroundRoutes.route("/:id").get(checkCampgroundId, getCampground);
-
+campgroundRoutes
+  .route("/:id")
+  .get(checkCampgroundId, getCampground)
+  .patch(checkCampgroundId, campgroundValidator, _dtoMiddleware, editSpecificCampground)
+  .delete(checkCampgroundId, deleteSpecificCampgrounds);
 export default campgroundRoutes;
