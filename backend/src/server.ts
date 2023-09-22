@@ -22,7 +22,7 @@ app.use;
 app.use("/auth", authRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/users", userRoutes);
-app.use("/reviews", reviewRoutes);
+app.use("/campgrounds/:id/reviews", reviewRoutes);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   const { status = 500, message, field } = err;
