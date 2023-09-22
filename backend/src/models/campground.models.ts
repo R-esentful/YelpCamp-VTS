@@ -4,9 +4,10 @@
  *  - Campground Interface
  */
 
+import { ICampground } from "@interfaces/models";
 import { Schema, model } from "mongoose";
 
-const campgroundSchema = new Schema(
+const campgroundSchema = new Schema<ICampground>(
   {
     campName: { type: String, required: [true, "Please provide a campground name."] },
     type: {
@@ -25,9 +26,8 @@ const campgroundSchema = new Schema(
       default: "FREE",
     },
     description: { type: String, required: [true, "Please provide campground description."] },
-    //TODO: link reviews and owner here.
-    // reviews:{}
-    // user:{}
+    reviews: { type: [Schema.Types.ObjectId], ref: "Review" },
+    user: { type: Schema.Types.ObjectId, ref: "User" },
     images: {
       type: [String],
       required: [true, "Please provide atleasst 5 images in the campground."],
@@ -44,5 +44,5 @@ const campgroundSchema = new Schema(
   { timestamps: true }
 );
 
-const Campground = model("Campground", campgroundSchema);
+const Campground = model<ICampground>("Campground", campgroundSchema);
 export default Campground;

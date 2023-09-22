@@ -6,14 +6,17 @@
 
 import { Schema, model } from "mongoose";
 
-const userSchema = new Schema(
+//Interfaces
+import { IUser } from "@interfaces/models";
+
+const userSchema = new Schema<IUser>(
   {
     firstName: { type: String, required: [true, "Please provide a valid first name"] },
     lastName: { type: String, required: [true, "Please provide a valid last name"] },
     emailAddress: {
       type: String,
       required: [true, "Please provide an email."],
-      unique: [true, "Email already exists"],
+      unique: true,
     },
     password: { type: String, default: "Not Applicable" },
     provider: {
@@ -27,9 +30,8 @@ const userSchema = new Schema(
         message: "Invalid provider.",
       },
     },
-    // TODO: Link campgrounds and reviews here.
-    // campgrounds: {},
-    // reviews: {},
+    campgrounds: { type: [Schema.Types.ObjectId], ref: "Campground" },
+    reviews: { type: [Schema.Types.ObjectId], ref: "Review" },
     profileImage: { type: String, default: "None" },
     bio: { type: String, default: "No bio indicated." },
     type: { type: String, enum: ["User", "Admin"], default: "User" },
@@ -38,5 +40,5 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const User = model("User", userSchema);
+const User = model<IUser>("User", userSchema);
 export default User;
