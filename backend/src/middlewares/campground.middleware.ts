@@ -9,7 +9,9 @@ import { CustomError, wrapper } from "@utils/general";
 // Models
 import Campground from "@models/campground.models";
 
-// TODO: FIX THIS SHIT
+/**
+ * Check campground id if it exists
+ */
 export const checkCampgroundId = wrapper(
   async (req: Request, res: Response, next: NextFunction) => {
     /**
