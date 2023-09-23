@@ -27,8 +27,6 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/users", userRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 
-app.use(_dtoMiddleware);
-
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   const { status = 500, message, field } = err;
 
