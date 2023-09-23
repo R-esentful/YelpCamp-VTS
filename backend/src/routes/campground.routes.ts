@@ -12,21 +12,21 @@ import {
   newCampground,
 } from "@controllers/campground.controllers";
 
-// Middlewares & DTO's
+// Middlewares
 import { _dtoMiddleware } from "@middlewares/dto.middleware";
-import { campgroundValidator } from "@dto/campground.dto";
-import { checkCampgroundId } from "@middlewares/campground.middleware";
+import {
+  campgroundIdParamValidator,
+  campgroundValidator,
+} from "@middlewares/campground.middleware";
 
 const campgroundRoutes = Router();
 
-campgroundRoutes
-  .route("/")
-  .get(getAllCampground)
-  .post(campgroundValidator, _dtoMiddleware, newCampground);
+campgroundRoutes.route("/").get(getAllCampground).post(campgroundValidator, newCampground);
 
 campgroundRoutes
   .route("/:id")
-  .get(checkCampgroundId, getCampground)
-  .patch(checkCampgroundId, campgroundValidator, _dtoMiddleware, editSpecificCampground)
-  .delete(checkCampgroundId, deleteSpecificCampgrounds);
+  .get(campgroundIdParamValidator, _dtoMiddleware, getCampground)
+  .patch(campgroundIdParamValidator, campgroundValidator, _dtoMiddleware, editSpecificCampground)
+  .delete(campgroundIdParamValidator, _dtoMiddleware, deleteSpecificCampgrounds);
+
 export default campgroundRoutes;

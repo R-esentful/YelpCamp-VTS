@@ -8,7 +8,7 @@ import { newUser } from "@controllers/user.controllers";
 
 // Middleware & DTO's
 import { _dtoMiddleware } from "@middlewares/dto.middleware";
-import { userValidator } from "@dto/user.dto";
+import { userValidator } from "@middlewares/user.middleware";
 
 const userRoutes = Router();
 
