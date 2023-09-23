@@ -11,9 +11,6 @@ import { wrapper, CustomError } from "@utils/general";
 // Interfaces
 import { ValidationInterface } from "@interfaces/interfaces";
 
-// Models
-import Campground from "@models/campground.models";
-
 /**
  * @desc A middleware that generally catches all errors before proceeding to the controller
  * TODO: Simplify logic per camp route to avoid repetitive if-else.
