@@ -1,7 +1,7 @@
 /**
  * This file contains all the Business Logic for Campgrounds.
  */
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
 
 // Utilities
 import { wrapper } from "@utils/general";

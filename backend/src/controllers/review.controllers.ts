@@ -32,13 +32,13 @@ export const getCampgroundReview = wrapper(async (req: Request, res: Response) =
 
 /**
  * @desc Creates a review of the specific campground
- * @route /campgrounds/:id/reviews/:reviewId
+ * @route /campgrounds/:id/reviews
  * @method POST
  */
 export const newCampgroundReview = wrapper(async (req: Request, res: Response) => {
-  const campground = await Campground.findById(req.body.id);
+  const campground = await Campground.findById(req.params.id);
 
-  const reviews = await new Review({ ...req.body }).save();
+  const reviews = await new Review({ ...req.body, campground: campground!._id }).save();
 
   return res.status(200).json({
     message: `Review for ${campground?.campName} successfully created.`,
