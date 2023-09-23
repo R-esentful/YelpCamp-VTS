@@ -12,6 +12,9 @@ import reviewRoutes from "@routes/reviews.routes";
 /** DATABASE **/
 import connectDB from "@configs/db.configs";
 
+/** MIDDLEWARE **/
+import { _dtoMiddleware } from "@middlewares/dto.middleware";
+
 connectDB();
 
 app.use(morgan("dev"));
@@ -23,6 +26,8 @@ app.use("/auth", authRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/users", userRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
+
+app.use(_dtoMiddleware);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   const { status = 500, message, field } = err;
