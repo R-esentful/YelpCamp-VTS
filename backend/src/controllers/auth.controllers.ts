@@ -1,3 +1,6 @@
+/**
+ * This file contains all the controllers or logic for authenticating users.
+ */
 import e, { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";

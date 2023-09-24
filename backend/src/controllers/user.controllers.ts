@@ -7,6 +7,7 @@ import { Request, Response, NextFunction } from "express";
 
 // Utilities
 import { wrapper } from "@utils/general";
+import { AWSDIRECTORY } from "@utils/aws";
 
 // Models
 import User from "@models/user.models";
@@ -23,7 +24,11 @@ export const newUser = wrapper(async (req: Request, res: Response, next: NextFun
   switch (provider) {
     case "EMAIL":
       const hashedpw = await bcrypt.hash(req.body.password, await bcrypt.genSalt(10));
-      await new User({ ...req.body, password: hashedpw, provider: "EMAIL" }).save();
+
+      const user = await new User({ ...req.body, password: hashedpw, provider: "EMAIL" }).save();
+
+      await AWSDIRECTORY(user._id, "users", "create");
+
       return res.status(201).json({ message: "YelpCamp account successfully created." });
 
     //TODO:

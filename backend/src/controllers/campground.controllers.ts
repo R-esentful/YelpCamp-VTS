@@ -5,6 +5,7 @@ import { Request, Response } from "express";
 
 // Utilities
 import { wrapper } from "@utils/general";
+import { AWSDIRECTORY } from "@utils/aws";
 
 // Models
 import Campground from "@models/campground.models";
@@ -27,6 +28,8 @@ export const getAllCampground = wrapper(async (req: Request, res: Response) => {
  */
 export const newCampground = wrapper(async (req: Request, res: Response) => {
   const campground = await new Campground({ ...req.body }).save();
+
+  await AWSDIRECTORY(campground._id, "campgrounds", "create");
 
   return res.status(201).json({
     message: `Campground ${campground.campName} successfully created.`,
