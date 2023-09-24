@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 /**
  * This file contains all the business logic for Users.
  */
@@ -21,7 +22,8 @@ export const newUser = wrapper(async (req: Request, res: Response, next: NextFun
   const { provider } = req.body;
   switch (provider) {
     case "EMAIL":
-      const queryUser = await new User({ ...req.body, provider: "EMAIL" }).save();
+      const hashedpw = await bcrypt.hash(req.body.password, await bcrypt.genSalt(10));
+      await new User({ ...req.body, password: hashedpw, provider: "EMAIL" }).save();
       return res.status(201).json({ message: "YelpCamp account successfully created." });
 
     //TODO:
