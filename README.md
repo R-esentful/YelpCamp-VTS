@@ -16,5 +16,10 @@ A web development bootcamp project by Coltsteel. Instead of using traditional or
 - AWS S3
 
 
+ALL CREDITS GOES TO THE RIGHTFUL OWNERS
+
+SPECIAL THANKS TO @Wanwan AK from SLAB Design Studio for the UI Inspiration
+https://dribbble.com/shots/16147565-Camping-Website
+
 For more information visit the udemy course =)\
 https://www.udemy.com/course/the-web-developer-bootcamp/
