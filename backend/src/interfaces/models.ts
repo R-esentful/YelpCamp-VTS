@@ -5,7 +5,7 @@
  *
  */
 
-import { Schema, Document } from "mongoose";
+import { Schema, Document, Model } from "mongoose";
 
 export interface IUser extends Document {
   firstName: string;
@@ -35,9 +35,17 @@ export interface ICampground extends Document {
   activities: string[];
 }
 
+export interface CampgroundModel extends Model<ICampground> {
+  deleteByUserId(id: string): Promise<object>;
+}
+
 export interface IReview extends Document {
   campground?: Schema.Types.ObjectId;
   user?: Schema.Types.ObjectId;
   rating: number;
   review: string;
+}
+
+export interface ReviewModel extends Model<IReview> {
+  deleteByUserId(id: string): Promise<object>;
 }

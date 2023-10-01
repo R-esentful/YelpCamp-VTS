@@ -4,10 +4,10 @@
  *  - Review Interface
  */
 
-import { IReview } from "@interfaces/models";
+import { IReview, ReviewModel } from "@interfaces/models";
 import { Schema, model } from "mongoose";
 
-const reviewSchema = new Schema<IReview>(
+const reviewSchema = new Schema<IReview, ReviewModel>(
   {
     rating: { type: Number, required: [true, "Please provide a rating."] },
     review: { type: String, required: [true, "Please provide a review for the campground"] },
@@ -17,5 +17,5 @@ const reviewSchema = new Schema<IReview>(
   { timestamps: true }
 );
 
-const Review = model<IReview>("Review", reviewSchema);
+const Review = model<IReview, ReviewModel>("Review", reviewSchema);
 export default Review;

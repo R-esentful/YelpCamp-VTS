@@ -4,10 +4,11 @@
  *  - Campground Interface
  */
 
-import { ICampground } from "@interfaces/models";
+import { CampgroundModel, ICampground } from "@interfaces/models";
+import { AWSDIRECTORY } from "@utils/aws";
 import { Schema, model } from "mongoose";
 
-const campgroundSchema = new Schema<ICampground>(
+const campgroundSchema = new Schema<ICampground, CampgroundModel>(
   {
     campName: { type: String, required: [true, "Please provide a campground name."] },
     type: {
@@ -41,8 +42,15 @@ const campgroundSchema = new Schema<ICampground>(
       required: [true, "Please provide atleast one activities in the campground."],
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
-const Campground = model<ICampground>("Campground", campgroundSchema);
+campgroundSchema.static("deleteByUserId", async function deleteByUserId(id: string) {
+  await AWSDIRECTORY(id, "campgrounds", "delete");
+  return await this.deleteMany({ user: id });
+});
+
+const Campground = model<ICampground, CampgroundModel>("Campground", campgroundSchema);
 export default Campground;

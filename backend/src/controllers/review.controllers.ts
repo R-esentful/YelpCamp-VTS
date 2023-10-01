@@ -41,7 +41,7 @@ export const newCampgroundReview = wrapper(async (req: Request, res: Response) =
   const reviews = await new Review({ ...req.body, campground: campground!._id }).save();
 
   return res.status(200).json({
-    message: `Review for ${campground?.campName} successfully created.`,
+    message: `Review for ${campground!.campName} successfully created.`,
     review: reviews,
   });
 });

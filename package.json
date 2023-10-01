@@ -16,9 +16,13 @@
   },
   "scripts": {
     "dev-fe": "",
+    "dev-be-test": "npm run test --prefix backend/",
     "dev-be": "npm run build --prefix backend/ && npm run dev --prefix backend/\"",
     "delay": "node -e \"setTimeout(()=>{},6000)\""
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "ts-jest": "^29.1.1"
+  }
 }

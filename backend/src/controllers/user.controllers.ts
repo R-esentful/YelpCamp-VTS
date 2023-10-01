@@ -11,6 +11,8 @@ import { AWSDIRECTORY } from "@utils/aws";
 
 // Models
 import User from "@models/user.models";
+import Campground from "@models/campground.models";
+import Review from "@models/review.models";
 
 /**
  * @desc Creates a new user
@@ -39,4 +41,15 @@ export const newUser = wrapper(async (req: Request, res: Response, next: NextFun
     case "GOOGLE":
       console.log("Google");
   }
+});
+
+export const deleteUser = wrapper(async (req: Request, res: Response) => {
+  Promise.all([
+    await Campground.deleteByUserId(req.params.id),
+    await Review.deleteByUserId(req.params.id),
+    await User.findByIdAndDelete(req.params.id),
+    await AWSDIRECTORY(req.params.id, "users", "delete"),
+  ]);
+
+  return res.status(200).json({ message: "Account successfully deleted." });
 });

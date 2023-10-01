@@ -8,7 +8,23 @@ import mongoose from "mongoose";
 // Models
 import User from "@models/user.models";
 
-export const userIdValidator = param("id")
+export const userIdParamValidator = param("id")
+  .notEmpty()
+  .withMessage("User ID should not be empty.")
+  .isString()
+  .withMessage("User ID should be a string.")
+  .custom(async (val: string) => {
+    if (!mongoose.isValidObjectId(val)) {
+      throw new Error("Please provide a valid User ID.");
+    }
+    const campground = await User.findById(val);
+    if (!campground) {
+      throw new Error("User does not exists.");
+    }
+    return true;
+  });
+
+export const userIdBodyValidator = param("id")
   .notEmpty()
   .withMessage("User ID should not be empty.")
   .isString()
