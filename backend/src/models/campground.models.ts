@@ -30,7 +30,7 @@ const campgroundSchema = new Schema<ICampground>(
     user: { type: Schema.Types.ObjectId, ref: "User" },
     images: {
       type: [String],
-      required: [true, "Please provide atleasst 5 images in the campground."],
+      required: [true, "Please provide atleast 5 images in the campground."],
     },
     amenities: {
       type: [String],
