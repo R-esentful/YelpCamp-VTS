@@ -6,12 +6,17 @@
 import mongoose from "mongoose";
 
 // Utilities
-import { MONGO_URI } from "@utils/variables";
+import { AWS_FOLDER, MONGO_URI } from "@utils/variables";
+
+// Configs
+import S3 from "./aws.configs";
 
 // Models
 import User from "@models/user.models";
 import Campground from "@models/campground.models";
 import Review from "@models/review.models";
+import { ListObjectsV2Command } from "@aws-sdk/client-s3";
+import { deleteSpecificDirectory } from "@utils/aws";
 
 /**
  * Set up Database Connection via MONGO URI.
@@ -20,6 +25,8 @@ const connectDB = async () => {
   try {
     const connection = await mongoose.connect(MONGO_URI);
     console.log(`Mongo Conneection Established @ ${connection.connection.host}}`);
+    // Seed database
+    await dbSeed();
   } catch (e) {
     console.log(`Error occured ${e}`);
   }
@@ -29,10 +36,15 @@ const connectDB = async () => {
  * Generate Databse seeds
  */
 
-export const dbSeed = async () => {
-  await User.find({}).deleteMany({});
-  await Campground.find({}).deleteMany({});
-  await Review.find({}).deleteMany({});
+const dbSeed = async () => {
+  Promise.all([
+    await deleteSpecificDirectory({ directory: "users" }),
+    await deleteSpecificDirectory({ directory: "campgrounds" }),
+
+    await User.find({}).deleteMany({}),
+    await Campground.find({}).deleteMany({}),
+    await Review.find({}).deleteMany({}),
+  ]);
 
   const userData = [
     {
