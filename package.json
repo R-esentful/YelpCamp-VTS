@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.418.0",
+    "@aws-sdk/client-s3": "^3.421.0",
     "basic-auth": "^2.0.1",
     "debug": "^2.6.9",
     "depd": "^2.0.0",
