@@ -10,11 +10,7 @@ import userRoutes from "@routes/user.routes";
 import reviewRoutes from "@routes/reviews.routes";
 
 /** DATABASE **/
-import connectDB, { dbSeed } from "@configs/db.configs";
-import { ENV } from "@utils/variables";
-
-// SEEDING DB
-if (ENV === "DEV") dbSeed();
+import connectDB from "@configs/db.configs";
 
 /** MIDDLEWARE **/
 import { _dtoMiddleware } from "@middlewares/dto.middleware";
