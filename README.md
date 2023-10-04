@@ -19,8 +19,8 @@ A web development bootcamp project by Coltsteel. Instead of using traditional or
 ALL CREDITS GOES TO THE RIGHTFUL OWNERS
 
 SPECIAL THANKS TO @Wanwan AK from SLAB Design Studio,Rohmad Khoirudin for the UI Inspiration
-https://dribbble.com/shots/16147565-Camping-Website
-https://dribbble.com/shots/20784853-Anchor-Detail-page-Room
+- https://dribbble.com/shots/16147565-Camping-Website
+- https://dribbble.com/shots/20784853-Anchor-Detail-page-Room
 
 
 For more information visit the udemy course =)\
