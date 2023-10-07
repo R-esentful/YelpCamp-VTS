@@ -8,7 +8,7 @@ export default {
   daisyui: {
     themes: [
       {
-        root: {
+        yelplight: {
           primary: "#EB5524",
 
           secondary: "#120b13",
@@ -26,6 +26,13 @@ export default {
           warning: "#fbbd23",
 
           error: "#f87272",
+
+          "background-color": "#fff",
+          color: "black",
+        },
+        yelpdark: {
+          "background-color": "#120b13",
+          color: "#ffff",
         },
       },
     ],

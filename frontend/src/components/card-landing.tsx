@@ -1,12 +1,12 @@
 import sample from "assets/review01.jpg";
-function CardLandingPage() {
+function CardLandingPage({ className }: { className?: string }) {
   return (
-    <div className="p-12 border border-gray-400 rounded-xl">
+    <div className={`p-12 border border-gray-400 rounded-xl ${className}`}>
       <p className="text-center text-xl">
         <svg
           stroke="currentColor"
           fill="#EB5524"
-          stroke-width="0"
+          strokeWidth="0"
           viewBox="0 0 16 16"
           height="1em"
           width="1em"
@@ -19,7 +19,7 @@ function CardLandingPage() {
           className="ml-auto"
           stroke="currentColor"
           fill="#EB5524"
-          stroke-width="0"
+          strokeWidth="0"
           viewBox="0 0 16 16"
           height="1em"
           width="1em"

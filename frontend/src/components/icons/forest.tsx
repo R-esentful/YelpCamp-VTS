@@ -1,19 +1,9 @@
-function Forest({
-  width,
-  height,
-  className,
-}: {
-  width: string;
-  height: string;
-  className: string;
-}) {
+function Forest({ className }: { className: string }) {
   return (
     <svg
       className={className}
       version="1.0"
       xmlns="http://www.w3.org/2000/svg"
-      width={width}
-      height={height}
       viewBox="0 0 1280.000000 730.000000"
       preserveAspectRatio="xMidYMid meet"
     >
