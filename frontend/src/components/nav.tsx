@@ -1,6 +1,7 @@
 import MenuIcon from "@components/icons/menu";
 import logo from "@assets/logo.png";
 import ThemeButton from "./theme";
+import { Link } from "react-router-dom";
 
 function Nav() {
   return (
@@ -12,30 +13,36 @@ function Nav() {
 
       <section className="flex my-auto">
         <div className="hidden md:flex">
-          <a
-            href=""
+          <Link
+            to="/"
             className="hover:text-primary hover:underline hover:underline-offset-4 mr-4 my-auto"
           >
             Home
-          </a>
-          <a
-            href=""
+          </Link>
+          <Link
+            to="/guide"
             className="hover:text-primary hover:underline hover:underline-offset-4 mr-4 my-auto"
           >
             Guide
-          </a>
-          <a
-            href=""
+          </Link>
+          <Link
+            to="/"
             className="hover:text-primary hover:underline hover:underline-offset-4 mr-4 my-auto"
           >
             About
-          </a>
-          <button className="btn btn-primary outline-none mr-2  rounded-full font-normal">
+          </Link>
+          <Link
+            to="/sign-up"
+            className="btn btn-primary outline-none mr-2  rounded-full font-normal"
+          >
             Sign Up
-          </button>
-          <button className="btn btn-primary outline-none rounded-full font-normal mr-2 my-auto">
+          </Link>
+          <Link
+            to="/sign-in"
+            className="btn btn-primary outline-none rounded-full font-normal mr-2 my-auto"
+          >
             Login
-          </button>
+          </Link>
           <ThemeButton />
         </div>
 
