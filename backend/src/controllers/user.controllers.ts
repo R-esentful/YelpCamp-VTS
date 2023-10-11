@@ -21,8 +21,10 @@ import User from "@models/user.models";
 
 export const newUser = wrapper(async (req: Request, res: Response, next: NextFunction) => {
   const { provider } = req.body;
+  console.log(req.body);
   switch (provider) {
     case "EMAIL":
+      console.log("pumasok");
       const hashedpw = await bcrypt.hash(req.body.password, await bcrypt.genSalt(10));
 
       const user = await new User({ ...req.body, password: hashedpw, provider: "EMAIL" }).save();
