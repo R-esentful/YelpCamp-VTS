@@ -17,6 +17,7 @@ export const handleSignup = async (
     action.setFieldValue("loading", true);
     const { loading, ...rest } = state;
     const response = await YelpCamp.post("/users", { ...rest, provider: "EMAIL" });
+    console.log(response);
     action.setFieldValue("loading", false);
   } catch (e) {
     console.log(e);
