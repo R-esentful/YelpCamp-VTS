@@ -1,8 +1,9 @@
-import sign from "assets/sign.jpg";
-import logo from "@assets/logo.png";
 import { BiLogoFacebookCircle } from "react-icons/bi";
 import { FcGoogle } from "react-icons/fc";
+import { Link } from "react-router-dom";
 import ThemeButton from "@components/theme";
+import sign from "assets/sign.jpg";
+import logo from "@assets/logo.png";
 
 function Signin() {
   return (
@@ -13,10 +14,10 @@ function Signin() {
 
       <section className="p-4 h-screen flex flex-col">
         <section className="flex content-center justify-between">
-          <div className="flex content-center">
+          <Link to="/" className="flex content-center">
             <img src={logo} alt="YelpCamp PH" width={60} height={60} />
             <span className="my-auto  text-xl font-semibold ">YelpCamp PH</span>
-          </div>
+          </Link>
           <ThemeButton />
         </section>
 
@@ -54,7 +55,7 @@ function Signin() {
 
             <div>
               <div className="divider my-8 w-full  text-sm">OR</div>
-              <div className="w-full  grid grid-cols-1 gap-4 ">
+              <div className="w-full  grid grid-cols-1 gap-4  lg:grid-cols-2">
                 <button className="btn btn-ghost">
                   <BiLogoFacebookCircle
                     color="blue"
@@ -67,6 +68,12 @@ function Signin() {
                   <span>google</span>
                 </button>
               </div>
+              <p className="text-sm text-center mt-4">
+                Don't have an account?{" "}
+                <Link className="text-primary" to="/sign-up">
+                  Sign up!
+                </Link>
+              </p>
             </div>
           </div>
         </section>

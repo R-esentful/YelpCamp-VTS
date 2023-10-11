@@ -20,7 +20,12 @@ connectDB();
 app.use(morgan("dev"));
 app.use(json());
 app.use(urlencoded({ extended: true }));
-app.use;
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    optionsSuccessStatus: 200,
+  })
+);
 
 app.use("/auth", authRoutes);
 app.use("/campgrounds", campgroundRoutes);

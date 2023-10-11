@@ -11,8 +11,8 @@ import { IUser } from "@interfaces/models";
 
 const userSchema = new Schema<IUser>(
   {
-    firstName: { type: String, required: [true, "Please provide a valid first name"] },
-    lastName: { type: String, required: [true, "Please provide a valid last name"] },
+    firstName: { type: String, default: "" },
+    lastName: { type: String, default: "" },
     emailAddress: {
       type: String,
       required: [true, "Please provide an email."],

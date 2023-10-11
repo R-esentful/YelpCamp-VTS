@@ -27,6 +27,9 @@
       "@layouts/*":["layouts/*"],
       "@pages/*":["pages/*"],
       "@store/*":["store/*"],
+      "@interfaces/*":["interfaces/*"],
+      "@api/*":["api/*"],
+      "@schema/*":["schema/*"]
     }
   },
   "include": ["src"],

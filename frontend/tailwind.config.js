@@ -31,6 +31,7 @@ export default {
           color: "black",
         },
         yelpdark: {
+          secondary: "#ffff",
           "background-color": "#120b13",
           color: "#ffff",
         },
