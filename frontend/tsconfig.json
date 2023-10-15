@@ -28,8 +28,9 @@
       "@pages/*":["pages/*"],
       "@store/*":["store/*"],
       "@interfaces/*":["interfaces/*"],
-      "@api/*":["api/*"],
-      "@schema/*":["schema/*"]
+      "@actions/*":["actions/*"],
+      "@schema/*":["schema/*"],
+      "@utils/*":["utilities/*"],
     }
   },
   "include": ["src"],
