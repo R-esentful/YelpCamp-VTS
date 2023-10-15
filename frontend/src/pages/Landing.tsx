@@ -10,7 +10,7 @@ import community01 from "@assets/community01.jpg";
 import community02 from "@assets/community02.jpg";
 import community03 from "@assets/community03.jpg";
 import CardLandingPage from "@components/card-landing";
-import Drawer from "@components/drawer";
+import Drawer from "@components/ui/drawer";
 import Nav from "@components/nav";
 
 function Landing() {

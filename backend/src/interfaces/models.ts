@@ -8,8 +8,7 @@
 import { Schema, Document } from "mongoose";
 
 export interface IUser extends Document {
-  firstName: string;
-  lastName: string;
+  name: string;
   emailAddress: string;
   password: string;
   provider: string;

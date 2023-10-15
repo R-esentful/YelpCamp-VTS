@@ -79,7 +79,7 @@ const dbSeed = async () => {
   userData.map(async (user) => {
     const newUser = await new User(user).save();
     await new Campground({
-      campName: `Camp ${newUser.lastName}`,
+      campName: `Camp ${newUser.name}`,
       type: "PUBLIC",
       rating: 4,
       location: "Cagayan Valley",

@@ -1,17 +1,19 @@
-import { BiLogoFacebookCircle } from "react-icons/bi";
-import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
-import { handleSignup, initialSignupVal } from "@api/signup";
+import { handleSignup, initialSignupVal } from "actions/signup";
 import { signupSchema } from "@schema/schema";
-import ThemeButton from "@components/theme";
+import ThemeButton from "@components/ui/theme";
 import sign from "assets/sign.jpg";
 import logo from "@assets/logo.png";
 import EyeIcon from "@components/icons/eye";
 import { useState } from "react";
 import EyeSlashIcon from "@components/icons/eye-slash";
+import FacebookComponent from "@components/facebook";
+import GoogleComponent from "@components/google";
+import { useSelector } from "react-redux";
 
 function Signup() {
+  const isLoading = useSelector((state: any) => state.authenticate.loading);
   const [viewPass, setViewPass] = useState<boolean>(false);
   const [viewConfirmPass, setViewConfirmPass] = useState<boolean>(false);
   const [showPass, setShowPass] = useState<boolean>(false);
@@ -44,7 +46,7 @@ function Signup() {
                 onSubmit={handleSignup}
                 validationSchema={signupSchema}
               >
-                {({ errors, touched, values }) => (
+                {({ errors, touched }) => (
                   <Form className="mt-4 w-full ">
                     {/* Email Address */}
                     <div className="form-control w-full  ">
@@ -131,12 +133,12 @@ function Signup() {
                     <button
                       type="submit"
                       className={`btn  w-full mt-8 ${
-                        values.loading === true
+                        isLoading === true
                           ? "pointer-events-none bg-[#D3D3D3] border-none"
                           : "btn-primary"
                       }`}
                     >
-                      {values.loading === true ? (
+                      {isLoading === true ? (
                         <span className="loading loading-spinner text-primary"></span>
                       ) : (
                         "CREATE AN ACCOUNT"
@@ -150,17 +152,8 @@ function Signup() {
             <div>
               <div className="divider my-8 w-full  text-sm">OR</div>
               <div className="w-full  grid grid-cols-1 gap-4 lg:grid-cols-2 ">
-                <button className="btn btn-ghost">
-                  <BiLogoFacebookCircle
-                    color="blue"
-                    className="align-middle my-auto  w-[24px] h-[24px]"
-                  />{" "}
-                  <span>Facebook</span>
-                </button>
-                <button className="btn btn-ghost">
-                  <FcGoogle className="align-middle my-auto  w-[23px] h-[23px]" />{" "}
-                  <span>google</span>
-                </button>
+                <FacebookComponent />
+                <GoogleComponent />
               </div>
               <p className="text-sm text-center mt-4">
                 Don't have an account?{" "}
