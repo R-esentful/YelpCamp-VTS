@@ -8,6 +8,8 @@ import Landing from "@pages/Landing";
 import Signup from "@pages/Signup";
 import Signin from "@pages/Signin";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import DashboardLayout from "@layouts/DashboardLayout";
+import Main from "@pages/Dashboard/Main";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -15,6 +17,9 @@ const router = createBrowserRouter(
       <Route index element={<Landing />} />
       <Route path="/sign-up" element={<Signup />} />
       <Route path="/sign-in" element={<Signin />} />
+      <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route index element={<Main />} />
+      </Route>
     </>
   )
 );
