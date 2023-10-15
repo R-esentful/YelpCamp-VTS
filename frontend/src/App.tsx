@@ -7,6 +7,7 @@ import {
 import Landing from "@pages/Landing";
 import Signup from "@pages/Signup";
 import Signin from "@pages/Signin";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,7 +21,9 @@ const router = createBrowserRouter(
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT}>
+        <RouterProvider router={router} />
+      </GoogleOAuthProvider>
     </>
   );
 }
