@@ -27,7 +27,7 @@ export default {
 
           error: "#f87272",
 
-          "background-color": "#fff",
+          "background-color": "#ffff",
           color: "black",
         },
         yelpdark: {
