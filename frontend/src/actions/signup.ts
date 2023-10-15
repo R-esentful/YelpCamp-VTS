@@ -14,6 +14,7 @@ export const handleSignup = async (
   action: FormikHelpers<typeof initialSignupVal>
 ) => {
   try {
+    console.log(action);
     const response = await YelpCamp.post("/users", { ...state });
     console.log(response);
   } catch (e) {

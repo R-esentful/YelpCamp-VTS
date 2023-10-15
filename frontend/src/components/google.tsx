@@ -26,6 +26,7 @@ function GoogleComponent() {
         const response = await YelpCamp.post("/users", { ...data });
 
         const { user, token, message } = response.data;
+        console.log(message);
         dispatch(
           authenticate({
             email: user.emailAddress,
