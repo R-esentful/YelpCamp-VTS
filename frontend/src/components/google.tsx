@@ -1,0 +1,59 @@
+import { FcGoogle } from "react-icons/fc";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
+import YelpCamp from "@actions/config";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authenticate, loading } from "@store/features/userSlice";
+
+function GoogleComponent() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: async (res) => {
+      const profile = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+        headers: { Authorization: `Bearer ${res.access_token}` },
+      });
+      const data = {
+        emailAddress: profile.data.email,
+        name: profile.data.name,
+        profileImage: profile.data.picture,
+        provider: "GOOGLE",
+      };
+
+      try {
+        const response = await YelpCamp.post("/users", { ...data });
+
+        const { user, token, message } = response.data;
+        dispatch(
+          authenticate({
+            email: user.emailAddress,
+            token,
+            picture: user.profileImage,
+            name: user.name,
+          })
+        );
+        dispatch(loading({ loading: false }));
+
+        if (response.status === 201) navigate("/dashboard");
+      } catch (e) {
+        dispatch(loading({ loading: false }));
+        console.log(e);
+      }
+    },
+  });
+
+  return (
+    <button
+      className="btn btn-ghost"
+      onClick={() => {
+        dispatch(loading({ loading: true }));
+        handleGoogleLogin();
+      }}
+    >
+      <FcGoogle className="align-middle my-auto  w-[23px] h-[23px]" /> <span>google</span>
+    </button>
+  );
+}
+export default GoogleComponent;

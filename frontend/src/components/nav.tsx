@@ -1,6 +1,6 @@
 import MenuIcon from "@components/icons/menu";
 import logo from "@assets/logo.png";
-import ThemeButton from "./theme";
+import ThemeButton from "./ui/theme";
 import { Link } from "react-router-dom";
 
 function Nav() {
