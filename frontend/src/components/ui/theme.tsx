@@ -18,7 +18,7 @@ function ThemeButton({ className }: { className?: string }) {
 
         {/* sun icon */}
         <svg
-          className="swap-on fill-current w-[24px] h-[24px]"
+          className="swap-on fill-current w-[20px] h-[20px]"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -27,7 +27,7 @@ function ThemeButton({ className }: { className?: string }) {
 
         {/* moon icon */}
         <svg
-          className="swap-off fill-current w-[24px] h-[24px]"
+          className="swap-off fill-current w-[20px] h-[20px]"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >

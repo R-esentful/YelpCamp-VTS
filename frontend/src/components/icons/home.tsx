@@ -1,10 +1,8 @@
-function DangerCircleIcon({
-  stroke,
+function HomeIcon({
   width,
   height,
   className,
 }: {
-  stroke: string;
   width: string;
   height: string;
   className?: string;
@@ -19,27 +17,20 @@ function DangerCircleIcon({
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M12 9V14"
-        stroke={stroke}
+        d="M12 18V15"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M12 21.41H5.93999C2.46999 21.41 1.01999 18.93 2.69999 15.9L5.81999 10.28L8.75999 5C10.54 1.79 13.46 1.79 15.24 5L18.18 10.29L21.3 15.91C22.98 18.94 21.52 21.42 18.06 21.42H12V21.41Z"
-        stroke={stroke}
+        d="M10.07 2.82L3.14002 8.37C2.36002 8.99 1.86002 10.3 2.03002 11.28L3.36002 19.24C3.60002 20.66 4.96002 21.81 6.40002 21.81H17.6C19.03 21.81 20.4 20.65 20.64 19.24L21.97 11.28C22.13 10.3 21.63 8.99 20.86 8.37L13.93 2.83C12.86 1.97 11.13 1.97 10.07 2.82Z"
+        stroke="currentColor"
         strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M11.9945 17H12.0035"
-        stroke={stroke}
-        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
     </svg>
   );
 }
-export default DangerCircleIcon;
+export default HomeIcon;
