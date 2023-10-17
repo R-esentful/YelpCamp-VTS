@@ -23,7 +23,7 @@ function DashboardLayout() {
 
         <section className="flex my-auto justify-center content-center ">
           <button className="mx-2 flex my-auto">
-            <HomeIcon stroke="black" width="22" height="22" className="hover:fill-primary" />{" "}
+            <HomeIcon width="22" height="22" className="hover:fill-primary" />{" "}
           </button>
 
           <button className="mx-2">
