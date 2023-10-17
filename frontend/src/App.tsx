@@ -10,6 +10,7 @@ import Signin from "@pages/Signin";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import DashboardLayout from "@layouts/DashboardLayout";
 import Main from "@pages/Dashboard/Main";
+import ThemeContextProvider from "context/ThemeContext";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,7 +28,9 @@ function App() {
   return (
     <>
       <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT}>
-        <RouterProvider router={router} />
+        <ThemeContextProvider>
+          <RouterProvider router={router} />
+        </ThemeContextProvider>
       </GoogleOAuthProvider>
     </>
   );
