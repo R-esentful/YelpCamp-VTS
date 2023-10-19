@@ -3,7 +3,6 @@ function NotificationBellIcon({
   height,
   className,
 }: {
-  stroke: string;
   width: string;
   height: string;
   className?: string;
