@@ -22,28 +22,33 @@ function DashboardLayout() {
         </section>
 
         <section className="flex my-auto justify-center content-center ">
-          <button className="mx-2 flex my-auto">
-            <HomeIcon width="22" height="22" className="hover:fill-primary" />{" "}
-          </button>
+          <div className="mx-2 my-auto tooltip tooltip-primary tooltip-bottom" data-tip="Home">
+            <button className="hover:text-primary ">
+              <HomeIcon width="22" height="22" />{" "}
+            </button>
+          </div>
 
-          <button className="mx-2">
-            <CampIcon width="20" height="20" className="hover:fill-primary" />
-          </button>
+          <div className="mx-2 my-auto tooltip tooltip-primary tooltip-bottom" data-tip="My Camp">
+            <button className="hover:text-primary ">
+              <CampIcon width="20" height="20" className="hover:fill-primary" />
+            </button>
+          </div>
+          <div
+            className="mx-2 my-auto tooltip tooltip-primary tooltip-bottom"
+            data-tip="Notifications"
+          >
+            <button className="hover:text-primary ">
+              <NotificationBellIcon width="22" height="22" className="hover:fill-primary" />
+            </button>
+          </div>
 
-          <button className="mx-2 ">
-            <NotificationBellIcon
-              stroke="black"
-              width="22"
-              height="22"
-              className="hover:fill-primary"
-            />
-          </button>
-
-          <label className="mx-2 swap swap-rotate">
-            <input type="checkbox" onClick={theme} />
-            <SunIcon width="20" height="20" className="swap-on hover:fill-primary" />
-            <MoonIcon width="20" height="20" className="swap-off hover:fill-primary" />
-          </label>
+          <div className="mx-2 my-auto tooltip tooltip-primary tooltip-bottom" data-tip="Theme">
+            <label className="mx-2 swap swap-rotate hover:text-primary">
+              <input type="checkbox" onClick={theme} />
+              <SunIcon width="20" height="20" className="swap-on " />
+              <MoonIcon width="20" height="20" className="swap-off " />
+            </label>
+          </div>
 
           <div className="w-[42px] h-[42px] p-1 my-auto mx-2 dropdown dropdown-end dropdown-hover">
             <img
