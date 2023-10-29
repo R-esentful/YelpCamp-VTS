@@ -12,7 +12,8 @@ export const initialSigninVal: FormikSignin = {
 export const handleSignin = async (
   state: FormikSignin,
   action: FormikHelpers<typeof initialSigninVal>,
-  navigate: any
+  navigate: any,
+  location: string
 ) => {
   try {
     action.setFieldValue("loading", true);
@@ -20,7 +21,7 @@ export const handleSignin = async (
     const response = await YelpCamp.post("/users", { ...rest });
     console.log(response);
     action.setFieldValue("loading", false);
-    navigate("/dashboard");
+    navigate("/dashboard", { state: { from: location } });
   } catch (e) {
     console.log(e);
   }
