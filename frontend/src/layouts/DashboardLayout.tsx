@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import logo from "@assets/logo.png";
 import NotificationBellIcon from "@components/icons/notification-bell";
 import user from "@assets/review01.jpg";
@@ -9,9 +9,18 @@ import LogoutIcon from "@components/icons/logout";
 import MoonIcon from "@components/icons/moon";
 import useTheme from "hooks/useTheme";
 import CampIcon from "@components/icons/camp";
+import { useDispatch } from "react-redux";
+import { logout } from "@store/features/userSlice";
 
 function DashboardLayout() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const theme = useTheme();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
 
   return (
     <div className="flex flex-col h-screen">
@@ -23,23 +32,23 @@ function DashboardLayout() {
 
         <section className="flex my-auto justify-center content-center ">
           <div className="mx-2 my-auto tooltip tooltip-primary tooltip-bottom" data-tip="Home">
-            <button className="hover:text-primary ">
+            <Link to="/dashboard" className="hover:text-primary ">
               <HomeIcon width="22" height="22" />{" "}
-            </button>
+            </Link>
           </div>
 
           <div className="mx-2 my-auto tooltip tooltip-primary tooltip-bottom" data-tip="My Camp">
-            <button className="hover:text-primary ">
+            <Link to="my-campgrounds" className="hover:text-primary ">
               <CampIcon width="20" height="20" className="hover:fill-primary" />
-            </button>
+            </Link>
           </div>
           <div
             className="mx-2 my-auto tooltip tooltip-primary tooltip-bottom"
             data-tip="Notifications"
           >
-            <button className="hover:text-primary ">
+            <Link to="notification" className="hover:text-primary ">
               <NotificationBellIcon width="22" height="22" className="hover:fill-primary" />
-            </button>
+            </Link>
           </div>
 
           <div className="mx-2 my-auto tooltip tooltip-primary tooltip-bottom" data-tip="Theme">
@@ -67,7 +76,7 @@ function DashboardLayout() {
                 </a>
               </li>
               <li>
-                <button className="hover:text-primary hover:stroke-primary">
+                <button className="hover:text-primary hover:stroke-primary" onClick={handleLogout}>
                   <LogoutIcon width="20" height="20" />
                   <span>Logout</span>
                 </button>
