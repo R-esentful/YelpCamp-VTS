@@ -9,7 +9,7 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 function Nav() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [searchParam, setSearchParam] = useSearchParams();
+  const [searchParam] = useSearchParams();
   const best = searchParam.get("tab") === "best matches";
   const near = searchParam.get("tab") === "near me";
   const visited = searchParam.get("tab") === "visited";

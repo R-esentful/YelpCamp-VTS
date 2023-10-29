@@ -6,11 +6,12 @@ function FilterDialog() {
   const initialValue = {
     campName: "",
   };
+  // errors, touched, values
   const handleSubmit = () => {};
   return (
     <Dialog id="filter" title="Filter">
       <Formik initialValues={initialValue} onSubmit={handleSubmit}>
-        {({ errors, touched, values }) => (
+        {() => (
           <Form className="mt-2 ">
             <div className="grid grid-cols-2 gap-4">
               <div className="form-control w-full ">
