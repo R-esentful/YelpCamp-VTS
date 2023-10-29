@@ -2,11 +2,12 @@ import { FcGoogle } from "react-icons/fc";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import YelpCamp from "@actions/config";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authenticate, loading } from "@store/features/userSlice";
 
 function GoogleComponent() {
+  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -29,6 +30,7 @@ function GoogleComponent() {
         console.log(message);
         dispatch(
           authenticate({
+            id: user._id,
             email: user.emailAddress,
             token,
             picture: user.profileImage,
@@ -37,7 +39,8 @@ function GoogleComponent() {
         );
         dispatch(loading({ loading: false }));
 
-        if (response.status === 201) navigate("/dashboard");
+        if (response.status === 201 || response.status === 200)
+          navigate("/dashboard", { state: { from: location.pathname } });
       } catch (e) {
         dispatch(loading({ loading: false }));
         console.log(e);

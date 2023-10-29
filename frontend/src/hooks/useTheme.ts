@@ -1,8 +1,8 @@
-import { themeContext } from "context/theme";
+import ThemeContext from "@context/theme/ThemeContext";
 import { useContext, useEffect } from "react";
 
 const useTheme = () => {
-  const theme = useContext(themeContext);
+  const theme = useContext(ThemeContext);
 
   useEffect(() => {
     localStorage.setItem("theme", theme!.theme);

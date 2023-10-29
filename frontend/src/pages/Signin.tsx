@@ -1,6 +1,6 @@
 import { Formik, Form, Field } from "formik";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import ThemeButton from "@components/ui/theme";
 import sign from "assets/sign.jpg";
 import logo from "@assets/logo.png";
@@ -12,6 +12,7 @@ import { handleSignin, initialSigninVal } from "@actions/signin";
 import { signinSchema } from "@schema/schema";
 
 function Signin() {
+  const location = useLocation();
   const navigate = useNavigate();
   const [viewPass, setViewPass] = useState<boolean>(false);
   const [showPass, setShowPass] = useState<boolean>(false);
@@ -43,7 +44,9 @@ function Signin() {
               <Formik
                 initialValues={initialSigninVal}
                 validationSchema={signinSchema}
-                onSubmit={(state, action) => handleSignin(state, action, navigate)}
+                onSubmit={(state, action) =>
+                  handleSignin(state, action, navigate, location.pathname)
+                }
               >
                 {({ errors, touched, values }) => (
                   <Form className="mt-4 w-full">

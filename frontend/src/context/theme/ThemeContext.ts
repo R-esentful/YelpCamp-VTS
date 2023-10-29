@@ -4,5 +4,6 @@ interface ThemeInterface {
   theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
 }
+const ThemeContext = createContext<ThemeInterface | undefined>(undefined);
 
-export const themeContext = createContext<ThemeInterface | undefined>(undefined);
+export default ThemeContext;

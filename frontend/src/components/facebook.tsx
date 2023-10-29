@@ -2,12 +2,13 @@ import { BiLogoFacebookCircle } from "react-icons/bi";
 import { FacebookLoginClient } from "@greatsumini/react-facebook-login";
 import { useEffect } from "react";
 import YelpCamp from "@actions/config";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authenticate, loading } from "@store/features/userSlice";
 
 function FacebookComponent() {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,10 +34,10 @@ function FacebookComponent() {
 
             try {
               const response = await YelpCamp.post("/users", { ...data });
-              const { user, token, message } = response.data;
-              console.log(message);
+              const { user, token } = response.data;
               dispatch(
                 authenticate({
+                  id: user._id,
                   email: user.emailAddress,
                   token,
                   picture: user.profileImage,
@@ -44,7 +45,8 @@ function FacebookComponent() {
                 })
               );
               dispatch(loading({ loading: false }));
-              if (response.status === 201) navigate("/dashboard");
+              if (response.status === 201 || response.status === 200)
+                navigate("/dashboard", { state: { from: location.pathname } });
             } catch (e) {
               dispatch(loading({ loading: false }));
               console.log(e);
