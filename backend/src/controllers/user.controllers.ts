@@ -51,7 +51,7 @@ export const newUser = wrapper(async (req: Request, res: Response, next: NextFun
         .json({ message: "YelpCamp account successfully created.", user: fb, token: tokenFb });
 
     case "GOOGLE":
-      const queryGoogle = await await User.findOne({ emailAddress: req.body.emailAddress });
+      const queryGoogle = await User.findOne({ emailAddress: req.body.emailAddress });
       const tokenGoogle = jwt.sign({ emailAddress: req.body.emailAddress }, secretKey, {
         expiresIn: "1hr",
       });

@@ -24,7 +24,7 @@ export const getAllCampground = wrapper(async (req: Request, res: Response) => {
 /**
  * @desc Gets all the campgrounds
  * @route /campgrounds
- * @method GET
+ * @method POST
  */
 export const newCampground = wrapper(async (req: Request, res: Response) => {
   const campground = await new Campground({ ...req.body }).save();
