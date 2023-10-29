@@ -11,3 +11,14 @@ export interface FormikSignin {
   loading: boolean;
   provider: string;
 }
+
+export interface FormikNewCampground {
+  campName: string;
+  type: string;
+  location: string;
+  description: string;
+  amenities: string[];
+  activities: string[];
+  // images: File[];
+  images: string[];
+}
