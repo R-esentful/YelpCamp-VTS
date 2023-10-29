@@ -44,7 +44,7 @@ function Toast({ type, description }: { type: string; description: string }) {
     <div
       className={`absolute overflow-hidden    bg-[#f2f2f2] p-4 flex bottom-4 right-4 rounded-xl translate-x-[${
         active ? "0" : "105"
-      }%] toast-transition  `}
+      }%] toast-transition z-50 `}
     >
       <section className=" rounded-full p-1 my-auto mr-3">{icon}</section>
       <div className="p-1">
