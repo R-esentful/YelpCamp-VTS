@@ -10,7 +10,7 @@ import Signin from "@pages/Signin";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import DashboardLayout from "@layouts/DashboardLayout";
 import Main from "@pages/Dashboard/Main";
-import ThemeContextProvider from "context/ThemeContext";
+import ThemeContextProvider from "@context/theme/ThemeProvider";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +21,7 @@ const router = createBrowserRouter(
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route index element={<Main />} />
       </Route>
+      <Route path="*" element={<p>Error 404!</p>} />
     </>
   )
 );
