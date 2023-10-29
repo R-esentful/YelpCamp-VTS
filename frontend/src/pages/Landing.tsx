@@ -12,8 +12,19 @@ import community03 from "@assets/community03.jpg";
 import CardLandingPage from "@components/card-landing";
 import Drawer from "@components/ui/drawer";
 import Nav from "@components/nav";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/store";
+import { useNavigate } from "react-router-dom";
 
 function Landing() {
+  const navigate = useNavigate();
+  const token = useSelector((state: RootState) => state.authenticate.token);
+
+  useEffect(() => {
+    if (token !== "") navigate("/dashboard");
+  }, [token, navigate]);
+
   return (
     <>
       <Drawer>

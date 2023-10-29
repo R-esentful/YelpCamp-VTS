@@ -11,9 +11,10 @@ import EyeSlashIcon from "@components/icons/eye-slash";
 import FacebookComponent from "@components/facebook";
 import GoogleComponent from "@components/google";
 import { useSelector } from "react-redux";
+import { RootState } from "@store/store";
 
 function Signup() {
-  const isLoading = useSelector((state: any) => state.authenticate.loading);
+  const isLoading = useSelector((state: RootState) => state.authenticate.loading);
   const [viewPass, setViewPass] = useState<boolean>(false);
   const [viewConfirmPass, setViewConfirmPass] = useState<boolean>(false);
   const [showPass, setShowPass] = useState<boolean>(false);
