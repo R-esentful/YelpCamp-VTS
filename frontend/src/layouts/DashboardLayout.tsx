@@ -1,7 +1,10 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "@store/features/userSlice";
+import { RootState } from "@store/store";
+import { useEffect } from "react";
 import logo from "@assets/logo.png";
 import NotificationBellIcon from "@components/icons/notification-bell";
-import user from "@assets/review01.jpg";
 import HomeIcon from "@components/icons/home";
 import UserIcon from "@components/icons/user";
 import SunIcon from "@components/icons/sun";
@@ -9,13 +12,20 @@ import LogoutIcon from "@components/icons/logout";
 import MoonIcon from "@components/icons/moon";
 import useTheme from "hooks/useTheme";
 import CampIcon from "@components/icons/camp";
-import { useDispatch } from "react-redux";
-import { logout } from "@store/features/userSlice";
 
 function DashboardLayout() {
+  const user = useSelector((state: RootState) => state.authenticate.token);
+  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useTheme();
+
+  useEffect(() => {
+    if (user === "")
+      return navigate("/sign-in", {
+        state: { status: "Unauthorized", callbackURL: location.pathname },
+      });
+  }, [user, navigate, location]);
 
   const handleLogout = () => {
     dispatch(logout());
